@@ -1,0 +1,10 @@
+Lancé le script php de cette façon :
+php index.php
+
+ATTENTION:
+la commande prend deux arguements:
+    - le premier est le nom du fichier d'entrée qui contient les caractéristiques de la map
+    - les second est le ichier de sortir dans lequel la map sera créée
+
+ex:
+php index.php fichierentrée.txt fichiersortie.txt
