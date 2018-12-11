@@ -3,7 +3,7 @@ $file = $argv[1];
 $mapFile = $argv[2];
 
 //définir la fonction pour créer la map
-function maFonction($file, $mapFile) {
+function createMap($file, $mapFile) {
     $fp = fopen ($file, "r");
         //stocker le contenu d'un fichier caractère par 
         //caractère dans un tableau et display le tableau;
