@@ -1,15 +1,37 @@
 <?php
-include 'readConf.php';
+require 'readConf.php';
+
+//autoloader pour inclure les classes automatiquement
+require 'Autoloader.php'; 
+Autoloader::register(); 
+
+function print_array($r) {
+    echo "<pre>";
+    var_dump($r);
+    echo "</pre>";
+}
 
 //lectrure du le fichier de conf (conf.txt) et stockage
-// de chaque ligne dans un tableau multidimensionnel
+//de chaque ligne dans un tableau multidimensionnel
 $file = 'conf.txt';
-$conf = readConf($file);
+// $conf = readConf($file);
+$conf = Map::readConf($file);
 
-//affichage du tableau multi (entouré des balise 
-//<pre></pre> pour une meilleure lecture)
-echo "<pre>";
-print_r($conf);
-echo "</pre>";
+//lecture du fichier de conf et création d'un tableau contenant tous les objets générés
+$elements = Element::createElements($conf);
+
+//display $elements pour voir ce qu'il contient (tableau d'objets)
+// foreach($elements as $element) {
+//     print_array($element);
+// }
+// die();
+
+//FAUT IL TRIER LE TABLEAU ???
+// usort($elements, function($a, $b){return $a->getType() < $b->getType();});
+
+//écriture de la map de base
+Map::writeMap($elements, "map.txt");
+
+
 
 ?>
