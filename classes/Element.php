@@ -59,6 +59,9 @@ class Element
     public function getType() {
         return $this->_type;
     }
+    public function getCaracter() {
+        return $this->_caracter;
+    }
 
     //setter: permet de modifier $_x dans index.php
     public function setX($x) {
@@ -66,3 +69,4 @@ class Element
     }
 }
 ?>
+ 
