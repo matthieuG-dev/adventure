@@ -44,36 +44,53 @@ class Map
                     }
                 }
             }
-
-            // if ($type == "Mountain") {
-            //     echo  $column . " " .  $line . " " . $caracter . " " . $type . "<br>";
-            //     Map::displayElement($caracter, $column, $line, $temp);
-            //     $fp = fopen($mapFile, "w+");
-            //     for ($m = 0; $m < $line; $m++) {
-            //         fwrite($fp, implode("       ", array_column($temp, $m)));
-                    
-            //         if ($m != $line - 1) {
-            //             fwrite($fp, "\n\n");
-            //         }
-            //     }
-            //     fclose ($fp);
-            // }
         }
     }
-
-    public static function createMap($caracter, $columns, $line, $temp) {
-        for ($j = 0; $j < $columns; $j++) {
+    
+    public static function createMap($caracter, $column, $line, $map) {
+        for ($j = 0; $j < $column; $j++) {
             for ($k = 0; $k < $line; $k++) {
-                $temp[$j][$k] = $caracter;
+                $map[$j][$k] = $caracter;
             }
         }
+        return $map;
+    }
+
+    public static function readMap($file) {
+        $temp = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        $i = 0;
+        foreach($temp as $line){
+            $temp[$i] = str_split(str_replace(' ', '', $line));
+            $i++;
+        } 
         return $temp;
     }
-    public static function displayElement($caracter, $line, $column, $temp) {
-        $temp[$line][$column] = $caracter;
-    }
-    public static function writeMap() {
 
+
+    public static function displayElement($arr, $temp, $mapFile) {
+        foreach($arr as $object) {
+            $type = $object->getType();
+            $column = $object->getX();
+            $line = $object->getY();
+            $caracter = $object->getCaracter();
+
+            switch($type) {
+                case 'Mountain':
+                    $temp[$column][$line] = $caracter;
+                case 'Treasure':
+                    $temp[$column][$line] = $caracter;
+            }
+        // }
+        // $fp = fopen($mapFile, "w+");
+        // for ($m = 0; $m < $line; $m++) {
+        //     fwrite($fp, implode("       ", array_column($temp)));
+            
+        //     if ($m != $line - 1) {
+        //         fwrite($fp, "\n\n");
+        //     }
+        }
+        print_r($temp);
+        //rééditer le fichier Map
     }
 }   
 

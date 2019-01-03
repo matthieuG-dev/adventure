@@ -7,8 +7,7 @@ class Element
     private $_caracter;
     private $_type;
 
-    private function __construct($x=NULL, $y=NULL, $number=NULL, 
-            $caracter=NULL, $type=NULL) {
+    private function __construct($y=NULL, $x=NULL, $number=NULL, $caracter=NULL, $type=NULL) {
         $this->_x = $x;
         $this->_y = $y;
         $this->_number = $number;
@@ -37,15 +36,15 @@ class Element
     }
 
     public static function init_plain($params) {
-        return new Element($params[1], $params[2], NULL, ".", "Plain");
+        return new Element($params[2], $params[1], NULL, ".", "Plain");
     }
 
     public static function init_mountain($params) {
-        return new Element($params[1], $params[2], NULL, $params[0], "Mountain");
+        return new Element($params[2], $params[1], NULL, $params[0], "Mountain");
     }
 
     public static function init_treasure($params) {
-        return new Element($params[1], $params[2], $params[3], $params[0], "Treasure");
+        return new Element($params[2], $params[1], $params[3], $params[0], "Treasure");
     }
 
     //getters et setters pour définir $x (largeur tableau ou position element abscisse)
