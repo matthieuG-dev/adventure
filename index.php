@@ -27,6 +27,15 @@ Map::displayMap($elements, "map.txt");
 
 $temp = Map::readMap($mapFile);
 
-Map::displayElement($elements, $temp, $mapFile);
 
+$temp = Map::displayElement($elements, $temp, $mapFile);
+echo "<br>START MAP :<br>";
+
+Map::writeFile($temp, $mapFile);
+print_array($temp);
+
+$test = Move::adventurerMoves($elements, $temp);
+// echo "<br>NEW MAP :<br>";
+// print_array($temp);
+Map::writeFile($test, $mapFile);
 ?>
