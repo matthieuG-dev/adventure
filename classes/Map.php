@@ -1,6 +1,7 @@
 <?php
 class Map
 {
+    
     public static function readConf($file) {
         $handle = fopen($file, "r");
         $e = [];
@@ -25,7 +26,7 @@ class Map
         return $e;
     }
 
-    public static function displayMap($arr ,$mapFile) {
+    public static function displayMap($arr ,$file) {
         foreach ($arr as $object) {
             $type = $object->getType();
             $temp = array();
@@ -36,7 +37,7 @@ class Map
             if ($type == "Plain") {                
                 $temp = Map::createMap($symbol, $column, $line, $temp);
                 
-                $fp = fopen($mapFile, "w+");
+                $fp = fopen($file, "w+");
                 for ($m = 0; $m < $line; $m++) {
                     fwrite($fp, implode("       ", array_column($temp, $m)));
                     
@@ -78,13 +79,13 @@ class Map
         return $temp;
     }
 
-    public static function displayElement($arr, $temp, $mapFile) {
+    public static function displayElement($arr, $temp, $file) {
+        echo "<br>OBEJCTS ARRAY :<br>";
         foreach($arr as $object) {
-            //affichage controle
-            // echo "<pre>";
-            // print_r($object);
-            // echo "</pre>";
 
+            echo "<pre>";
+            print_r($object);
+            echo "</pre>";
 
             $type = $object->getType();
             $line = $object->getX();
@@ -92,25 +93,25 @@ class Map
             $symbol = $object->getSymbol();
             switch($type) {
                 case 'Mountain':
-                    $temp[$line][$column ] = $symbol;
+                    $temp[$column][$line ] = $symbol;
                     break;
                 case 'Treasure':
                     $number = "(" . $object->getNumber() . ")";
-                    $temp[$line][$column ] = $symbol . $number;
+                    $temp[$column][$line ] = $symbol . $number;
                     break;
                 case 'Adventurer':
                     $name = "(" . $object->getName() . ")";
                     $temp[$line][$column ] = $symbol . $name;
                     break;
                 case 'Orc':
-                    $temp[$line][$column ] = $symbol;
+                    $temp[$column][$line ] = $symbol;
                     break;
                 case 'Goblin':
-                    $temp[$line][$column ] = $symbol;
+                    $temp[$column][$line ] = $symbol;
                     break;
             }
-        Map::writeFile($temp, $mapFile);
         }
+        //Map::writeFile($temp, $file);
 
         return $temp;
     }

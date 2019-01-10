@@ -1,9 +1,9 @@
-A(Lara)       .       A(matt)       .
+.       A(Lara)       .       A(matt)
 
-.       .       M       .
+M       .       .       T(3)
 
-.       .       O       .
+.       M       O       G
 
-T(2)       T(3)       G       .
+.       .       .       .
 
 .       .       .       .

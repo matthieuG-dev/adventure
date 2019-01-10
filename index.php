@@ -20,22 +20,29 @@ $conf = Map::readConf($file);
 
 //lecture du fichier de conf et création d'un tableau contenant tous les objets générés
 $elements = Element::createElements($conf);
-
-$mapArr = Map::readMap($conf);
+echo "<br> CONF : <br>";
+print_array($conf);
 
 Map::displayMap($elements, "map.txt");
 
-$temp = Map::readMap($mapFile);
+$mapArr = Map::readMap($mapFile);
 
-
-$temp = Map::displayElement($elements, $temp, $mapFile);
+$mapArr = Map::displayElement($elements, $mapArr, $mapFile);
 echo "<br>START MAP :<br>";
+print_array($mapArr);
 
-Map::writeFile($temp, $mapFile);
-print_array($temp);
+Map::writeFile($mapArr, $mapFile);
 
-$test = Move::adventurerMoves($elements, $temp);
-// echo "<br>NEW MAP :<br>";
-// print_array($temp);
+$test = Move::adventurerMoves($elements, $mapArr);
+echo "<br>NEW MAP :<br>";
+print_array($test);
+
 Map::writeFile($test, $mapFile);
 ?>
+
+{# Move::$start[".$orientation]($mapArr, $x, $y, $symbol. "(" .$item->getName(). ")" );
+$orientation = $item->getOrienatation();
+
+if ($moves[0] == "A") {
+                // Move::$start["E"]($mapArr, $x, $y, $symbol."(".$item->getName().")");
+            } #}
