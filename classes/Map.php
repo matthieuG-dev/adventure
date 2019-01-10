@@ -1,7 +1,6 @@
 <?php
 class Map
 {
-    
     public static function readConf($file) {
         $handle = fopen($file, "r");
         $e = [];
@@ -79,13 +78,9 @@ class Map
         return $temp;
     }
 
-    public static function displayElement($arr, $temp, $file) {
+    public static function displayElement($arr, $temp) {
         echo "<br>OBEJCTS ARRAY :<br>";
         foreach($arr as $object) {
-
-            echo "<pre>";
-            print_r($object);
-            echo "</pre>";
 
             $type = $object->getType();
             $line = $object->getX();

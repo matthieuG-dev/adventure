@@ -21,7 +21,11 @@ $conf = Map::readConf($file);
 //lecture du fichier de conf et création d'un tableau contenant tous les objets générés
 $elements = Element::createElements($conf);
 echo "<br> CONF : <br>";
-print_array($conf);
+print_array($elements);
+
+echo "<br> SORT : <br>";
+
+
 
 Map::displayMap($elements, "map.txt");
 
@@ -33,16 +37,14 @@ print_array($mapArr);
 
 Map::writeFile($mapArr, $mapFile);
 
-$test = Move::adventurerMoves($elements, $mapArr);
-echo "<br>NEW MAP :<br>";
-print_array($test);
+// $test = Move::adventurerMoves($elements, $mapArr);
+// echo "<br>test found :<br>";
+// var_dump($test);
 
-Map::writeFile($test, $mapFile);
+// echo "TEST";
+
+
+
+
 ?>
 
-{# Move::$start[".$orientation]($mapArr, $x, $y, $symbol. "(" .$item->getName(). ")" );
-$orientation = $item->getOrienatation();
-
-if ($moves[0] == "A") {
-                // Move::$start["E"]($mapArr, $x, $y, $symbol."(".$item->getName().")");
-            } #}
