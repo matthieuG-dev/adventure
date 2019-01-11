@@ -79,6 +79,7 @@ class Map
     }
 
     public static function displayElement($arr, $temp) {
+        echo "<br>OBEJCTS ARRAY :<br>";
         foreach($arr as $object) {
 
             $type = $object->getType();

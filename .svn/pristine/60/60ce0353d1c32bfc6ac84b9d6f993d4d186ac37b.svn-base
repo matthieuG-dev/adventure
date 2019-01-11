@@ -1,4 +1,5 @@
 <?php
+
 class Move
 {
     private static $start = array(
@@ -9,7 +10,7 @@ class Move
     );
 
     public static function moveRight(&$arr, $x, $y, $symbol) {
-        if ($y < (count($arr[$x]) - 1)) {
+        if ($y < count($arr[$x])){
             $next = $arr[$x][$y + 1];
             if ($next[0]=="A") return;
             $arr[$x][$y + 1] = $symbol;
@@ -17,28 +18,22 @@ class Move
         }
     }
     
-    public static function moveLeft(&$arr, $x, $y, $symbol) {
+    public static function moveLeft($arr, $x, $y, $symbol) {
         if ($y > 0) 
             $next = $arr[$x][$y - 1];
             if ($next[0]=="A") return;
-            $arr[$x][$y - 1] = $symbol;
+            $arr[$x][$y + 1] = $symbol;
             $arr[$x][$y] = ".";
     }
 
-    public static function moveDown(&$arr, $x, $y, $symbol) {
+    public static function moveUp($arr, $x, $y, $symbol) {
         if ($x > 0)
-            $next = $arr[$x + 1][$y];
-            if ($next[0]=="A") return;
-            $arr[$x + 1][$y] = $symbol;
-            $arr[$x][$y] = ".";
+            $arr[$x - 1][$y] = $symbol;
     }
 
-    public static function moveUp(&$arr, $x, $y, $symbol) {
+    public static function moveDown($arr, $x, $y, $symbol) {
         if ($x < count($arr)) 
-            $next = $arr[$x - 1][$y];
-            if ($next[0]=="A") return;
-            $arr[$x - 1][$y] = $symbol;
-            $arr[$x][$y] = ".";
+            $arr[$x + 1][$y] = $symbol;
     }
 
     public static function foundNext($arrObjects, $item) {
@@ -76,7 +71,7 @@ class Move
                 case 'E':
                     Move::$start[$orientation]($mapArr, $x, $y, $symbol . "(" . $name . ")");
                 break;
-                case 'O':
+                case 'L':
                     Move::$start[$orientation]($mapArr, $x, $y, $symbol . "(" . $name . ")");
                 break;
                 case 'N':
@@ -85,6 +80,7 @@ class Move
                 case 'S':
                     Move::$start[$orientation]($mapArr, $x, $y, $symbol . "(" . $name . ")");
                 break;
+
             }
         }
         return $mapArr;

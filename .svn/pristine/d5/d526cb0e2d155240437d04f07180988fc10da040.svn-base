@@ -1,0 +1,36 @@
+<?php
+include 'readConf.php';
+include 'Element.php';
+
+// $plaine = new Element;
+
+// $plaine->setX("toto");
+// echo $plaine->getX() . "<br>";
+
+
+
+//lectrure du le fichier de conf (conf.txt) et stockage
+//de chaque ligne dans un tableau multidimensionnel
+$file = 'conf.txt';
+$conf = readConf($file);
+
+
+
+//lecture de chaque ligne du  multidimentionnel
+foreach ($conf as $key=>$line) {
+    //lecture de chaque element de chaque sous-tableau
+    if (isset($line)) {
+        foreach($line as $value) {
+            if (isset($line)) {
+                echo $value ." <br>";
+                if ($value == "G") {
+                    echo "trouvé : " . $value . "<br>";
+                }
+            }
+        }
+    }
+}
+// echo "<pre>";
+// var_dump($conf);
+// echo "</pre>";
+?>

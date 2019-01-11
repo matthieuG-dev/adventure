@@ -1,0 +1,42 @@
+<?php
+class Map
+{
+    public static function readConf($file) {
+        $handle = fopen($file, "r");
+        $e = [];
+        if ($handle) {
+            $k = 0;
+            $i = 0;
+            while ($line = fgets($handle, 100)) {
+                $trimmedLine = trim($line, "\n");
+                $trimmedLine = str_replace(' ', '', $trimmedLine);
+                $elements = explode("-", $trimmedLine);
+                $list = [];
+                foreach($elements as $element) 
+                    $list[] = trim($element);
+                $e[$i] = $list;
+                $e[$i][0] = substr($e[$i][0], 0, 1);
+                $i++;
+            }
+        }
+        fclose($handle);
+        return $e;
+    }
+    
+    public static function writeMap($arr, $mapFile) {
+        
+    }   
+
+    $fp = fopen("map.txt", "w+");
+    for ($m = 0; $m < $line; $m++) {
+        fwrite($fp, implode("       ", array_column($map, $m)));
+
+        if ($m != $line - 1) {
+            fwrite($fp, "\n\n");
+        }
+    }
+    fclose ($fp);
+    }
+}
+
+?>

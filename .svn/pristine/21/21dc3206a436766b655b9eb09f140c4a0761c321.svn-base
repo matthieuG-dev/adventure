@@ -3,20 +3,18 @@
 require 'Autoloader.php'; 
 Autoloader::register(); 
 
-//focntion test debuggage
 function print_array($r) {
     echo "<pre>";
     var_dump($r);
     echo "</pre>";
 }
-
 //inclure fichier contenant les configurations de la map
-$confFile = 'conf.txt';
+$file = 'conf.txt';
 
 //inclure fichier de sortie
 $mapFile = 'map.txt';
 
-$conf = Map::readConf($confFile);
+$conf = Map::readConf($file);
 
 //lecture du fichier de conf et création d'un tableau contenant tous les objets générés
 $elements = Element::createElements($conf);

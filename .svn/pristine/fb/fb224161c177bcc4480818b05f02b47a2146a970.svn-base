@@ -1,0 +1,64 @@
+<?php
+class Map
+{
+    public static function readConf($file) {
+        $handle = fopen($file, "r");
+        $e = [];
+        if ($handle) {
+            $k = 0;
+            $i = 0;
+            while ($line = fgets($handle, 100)) {
+                $trimmedLine = trim($line, "\n");
+                $trimmedLine = str_replace(' ', '', $trimmedLine);
+                $elements = explode("-", $trimmedLine);
+                $list = [];
+                foreach($elements as $element) 
+                    $list[] = trim($element);
+                $e[$i] = $list;
+                $e[$i][0] = substr($e[$i][0], 0, 1);
+                $i++;
+            }
+        }
+        fclose($handle);
+        return $e;
+    }
+    
+    public static function writeMap($arr) {
+        // $fp = fopen($mapFile, "w+");
+        // echo "<pre>";
+        // var_dump($arr[0]);
+        // echo "</pre>";
+
+        foreach ($arr as $object) {
+            // foreach($)
+            echo "<pre>";
+            print_r($object);
+            echo "</pre>";
+
+            foreach($object as $value) {
+                print $value;
+            }
+
+        }
+
+
+        // foreach($arr as $value) {
+            // if ($value == "Plain")
+                // return $value;
+        // }
+
+
+        // for ($m = 0; $m < $line; $m++) {
+        //     // fwrite($fp, implode("       ", array_column($map, $m)));
+    
+        //     if ($m != $line - 1) {
+        //         fwrite($fp, "\n\n");
+        //     }
+        // }
+        // fclose ($fp);
+    }
+}   
+
+
+
+?>
